@@ -4,6 +4,7 @@ import { CircularProgress } from "@material-ui/core";
 import StatusBox from "./components/StatusBox";
 import Navbar from "./components/Navbar";
 import CountryRow from "./components/CountryRow";
+import Chart from "./components/Chart";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -58,6 +59,11 @@ function App() {
             {countries.map((e) => (
               <CountryRow key={e.Country} name={e.Country} value={e.TotalConfirmed} percentage={Math.ceil((e.TotalConfirmed / countries[0].TotalConfirmed) * 100)} />
             ))}
+          </div>
+          <div className="chart-container">
+            <Chart color="#0250C4" name="Total" data={timeline.filter((e) => e.TotalConfirmed).map((e) => e.TotalConfirmed)} labels={timeline.filter((e) => e.TotalConfirmed).map((e) => e.Date)} />
+            <Chart color="#ffa500" name="New cases" data={timeline.filter((e) => e.NewConfirmed).map((e) => e.NewConfirmed)} labels={timeline.filter((e) => e.NewConfirmed).map((e) => e.Date)} />
+            <Chart color="#FF0000" name="New Death" data={timeline.filter((e) => e.NewDeaths).map((e) => e.NewDeaths)} labels={timeline.filter((e) => e.NewDeaths).map((e) => e.Date)} />
           </div>
         </>
       )}

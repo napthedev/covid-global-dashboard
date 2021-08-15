@@ -102,6 +102,17 @@ body {
   background: linear-gradient(to right, blue, orangered);
 }
 
+.chart-container {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background: #191a1b;
+  border-radius: 10px;
+  padding: 10px;
+  gap: var(--spaces);
+}
+
 @media (max-width: 1200px) {
   :root {
     --spaces: 10px;
